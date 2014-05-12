@@ -19,7 +19,6 @@ void NavierStokes::addToDensity(vector<Particle> & _particles)
 {
 	for(vector<Particle>::size_type i = 0; i < _particles.size(); i++)
 	{
-		m_Density()
 	}
 }
 

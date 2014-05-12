@@ -39,15 +39,15 @@ protected:
 
 	// The storage of properties on grids
 	// Whether this is a boundary
-	VectorXd m_IsBoundary;
+	Eigen::VectorXd m_IsBoundary;
 
 	// Mass at each grid point
-	VectorXd m_Density;
+	Eigen::VectorXd m_Density;
 
 	// Velocity at each grid point
-	VectorXd m_VelocityX; 
-	VectorXd m_VelocityY; 
-	VectorXd m_VelocityZ; 
+	Eigen::VectorXd m_VelocityX; 
+	Eigen::VectorXd m_VelocityY; 
+	Eigen::VectorXd m_VelocityZ; 
 
 };
 

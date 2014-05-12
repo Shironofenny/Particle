@@ -10,8 +10,8 @@ PhysicsEngine::~PhysicsEngine()
 
 }
 	
-void PhysicsEngine::process(VectorXd & _force, VectorXd & _generalPos, VectorXd & _generalVel,\
-		 	VectorXd & _generalIne, double dt)
+void PhysicsEngine::process(Eigen::VectorXd & _force, Eigen::VectorXd & _generalPos,\
+	 Eigen::VectorXd & _generalVel,	Eigen::VectorXd & _generalIne, double dt)
 {
 
 }
