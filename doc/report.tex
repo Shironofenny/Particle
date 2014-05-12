@@ -1,0 +1,137 @@
+% English Version of fe-i-tex
+
+\documentclass{article}
+
+% Set margins:
+\hoffset = -0.9in
+\voffset = -0.75in
+\textheight = 680pt
+\textwidth = 470pt
+
+% Mathematic libraries
+\usepackage{amsmath}
+\usepackage{amssymb}
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\me}{\mathrm{e}}
+\newcommand{\mi}{\mathrm{i}}
+\newcommand{\erf}{\mathrm{erf}}
+
+% Symbol libraries
+\usepackage{textcomp}
+
+% Code display library
+\usepackage{mylistings}
+
+% Graphic libraries
+\usepackage{float}
+\usepackage{graphicx}
+
+% Use self-def section type
+\usepackage[compact]{titlesec}
+\titleformat{\section}{\Large\rmfamily\scshape}{}{0.5em}{}[\titlerule \vspace{7pt}]
+
+\usepackage{xcolor}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=false,
+	linkbordercolor=blue,
+	pdfborderstyle={/S/U/W 1}
+}
+
+% Enumerate label libraries
+\usepackage{enumerate}
+ 
+% Font package
+\usepackage{times}
+
+\usepackage{setspace}
+
+% TODO: Add your article here.
+
+\begin{document}
+
+\title{{\scshape Computer Graphics Programming Assignment 3 \\ {\large Report, manual and documentation}}}
+\author{Yihan Zhang (Uni:yz2567)}
+\maketitle
+
+\section{Description}
+
+\begin{enumerate}[\hspace{5pt}]
+	\item This program mainly implements a series of shader required. User could use keys to switch between the shaders. The position and the number of light sources can be easily modified using a xml file without recompile.
+\end{enumerate}
+
+\section{Compile \& Run}
+
+	\begin{enumerate}
+	
+		\item For Linux user, if you have bash installed in your machine, you can just move to the direction and type:
+
+			{\hspace{5pt}\ttfamily ./.install -r}
+
+			After a successful compile, type: 
+			
+			{\hspace{5pt}\ttfamily ./bin/particle}
+
+			to run the program.
+
+			If you can't run this script, or it does not successfully get compiled or built, or just feel unsafe about what it is doing, but lazy to check it out yourself, you could follow general installation procedure described in part 2.
+
+		\item The general installation method should work for all Linux and Mac systems. 
+			Firstly, you need to build up all the directories that is essential for cmake to run. At root directory, type:
+
+			{\hspace{5pt} \ttfamily mkdir ./bin ./bin/data ./build}
+
+			Secondly, run cmake:
+
+			{\hspace{5pt}\ttfamily cd build}
+			
+			{\hspace{5pt}\ttfamily cmake ..}
+
+			Finally, you could find the excutable at:
+			
+			{\hspace{5pt}\ttfamily ./bin/particle}
+
+			Just run it and have fun!
+
+	\end{enumerate}
+
+\section{Control}
+
+\begin{enumerate}[\hspace{5pt}]
+	
+	\item To change the shaders in the program, you could use a series of number keys:
+		
+		{\hspace{5pt}\ttfamily 1} : Toon shader in the starter code. the position of light sources are not passed to this shader.
+
+		{\hspace{5pt}\ttfamily 2} : Gouraund shader with Phong reflection model.
+
+		{\hspace{5pt}\ttfamily 3} : Blinn-Phong shader.
+
+		{\hspace{5pt}\ttfamily 4} : Blinn-Phong shader with checkboard pattern.
+
+	\item You could also use:
+
+		{\hspace{5pt}\ttfamily Escape} : End the program instantly.
+
+\end{enumerate}
+
+\section{Features}
+
+	\begin{enumerate}
+		\item XML based light source configuration.
+			The position of the light source in this program is fully customized in "src/GameEngine/Data/config.xml" (which will be copied to "bin/data/config.xml" when compiling, and the latter file is, in reality, used by the program).
+			You could change this file to pose lights.
+			The maximum number of lights is 8 according to the current version of program.
+			The program will not run if you have lights more than that number.
+
+	\end{enumerate}
+
+\section{Reference}
+	\begin{enumerate}
+		\item {\bf Reference:} Idea inspired by \url{http://prideout.net/blog/?p=63}
+		\item {\bf External source:} RapidXML library \url{http://rapidxml.sourceforge.net/index.htm}
+		\item {\bf External source:} PNG texture loader \url{http://en.wikibooks.org/wiki/OpenGL_Programming/Intermediate/Textures}
+	\end{enumerate}
+
+\end{document}
