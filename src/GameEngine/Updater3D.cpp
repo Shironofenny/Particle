@@ -1,5 +1,7 @@
 #include "Updater3D.h"
 
+#include "Interaction/Keyboard.h"
+
 Updater3D::Updater3D(Scene3D & _scene) :
 	Updater(), 
 	m_Scene(_scene)
@@ -16,6 +18,15 @@ void Updater3D::Update(double dt)
 		 m_Scene.getParticleSystem().getSource(), dt);
 
 	m_Scene.getParticleSystem().update(dt);
+
+	if(Keyboard::getInstance().isKeyTriggerDown('h'))
+	{
+		m_Scene.getIsShowInfo() = ! m_Scene.getIsShowInfo();
+	}
+	if(Keyboard::getInstance().isKeyTriggerDown('r'))
+	{
+		m_Scene.getIsShowRegion() = ! m_Scene.getIsShowRegion();
+	}
 }
 
 int Updater3D::processSelection()

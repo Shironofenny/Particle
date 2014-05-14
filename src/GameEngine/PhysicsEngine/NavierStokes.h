@@ -18,9 +18,9 @@ public:
 	// Destructor
 	~NavierStokes();
 
-	// Initialize the physics engine
-	void initialize(Vector _frameScale, Vector _deviation, float _spacing);
-	
+	// Parse XML file to initialize
+	void parseXML(string & _filename);
+
 	// Main entrance of the whole engine, advance the system in time dt
 	// For fluid equation, this function will first process in Eulerian scheme, then translate
 	// the grids into Lagrangian scheme, i.e., assign each particle with a corresponding velocity
@@ -31,6 +31,9 @@ public:
 	void renderRegion();
 
 protected:
+	
+	// Initialize the physics engine
+	void initialize();
 	
 	// Get the linear indice from a 3D grid point
 	int getIndice(int x, int y, int z);
@@ -72,9 +75,6 @@ protected:
 
 	// The deviation of the region from centering the source
 	Vector m_Deviation;
-
-	// The diffusivity of the fluid flow
-	float m_Diffusivity;
 
 	// The viscousity of the fluid flow
 	float m_Viscousity;

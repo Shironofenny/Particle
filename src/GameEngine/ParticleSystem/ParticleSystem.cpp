@@ -46,6 +46,22 @@ void ParticleSystem::parseXML(string const & _filename)
 
 	m_GenerationPerSecond =\
 			str2num(config->first_node("Generation")->first_attribute("persecond")->value());
+
+	// Initialize the color sequence
+	xml_node<> * color = config->first_node("KeyFrames");
+	xml_node<> * frame = color->first_node("Frame");
+	while(frame != NULL)
+	{
+		m_ParticleProperty.addFrame(str2num(frame->first_attribute("tr")->value()),\
+			 											 str2num(frame->first_attribute("r")->value()),\
+			 											 str2num(frame->first_attribute("g")->value()),\
+			 											 str2num(frame->first_attribute("b")->value()),\
+			 											 str2num(frame->first_attribute("a")->value()),\
+			 											 str2num(frame->first_attribute("sx")->value()),\
+			 											 str2num(frame->first_attribute("sy")->value()),\
+			 											 str2num(frame->first_attribute("sz")->value()));
+		frame = frame->next_sibling();
+	}
 }
 	
 void ParticleSystem::update(double dt)
@@ -76,9 +92,13 @@ void ParticleSystem::update(double dt)
 
 void ParticleSystem::render(Camera & _camera)
 {
+	GLfloat color[4];
+	Vector scale;
 	for(vector<Particle>::size_type i = 0; i < m_Particles.size(); i++)
 	{
-		glColor4f(1., 0., 0., 1.0);
+		m_ParticleProperty.getProperty(m_Particles[i].getLifeRatio(), color, scale);
+		glColor4fv(color);
+		m_Particles[i].getScale() = scale;
 		m_Particles[i].render(_camera);
 	}
 }

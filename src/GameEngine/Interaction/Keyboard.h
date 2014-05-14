@@ -22,6 +22,9 @@ class Keyboard
 		// Return whether the test key is down
 		bool isKeyDown(unsigned char const & key) const;
 
+		// Return whether the test key is down
+		bool isKeyTriggerDown(unsigned char const & key);
+
 		// Return whether the test key is up
 		bool isKeyUp(unsigned char const & key) const;
 
@@ -39,6 +42,9 @@ class Keyboard
 
 		// Used to restore key state
 		bool m_KeyState[256];
+
+		// Used to restore key state
+		bool m_KeyScreen[256];
 };
 
 #endif

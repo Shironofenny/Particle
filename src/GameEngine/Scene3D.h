@@ -49,7 +49,12 @@ class Scene3D : public Scene
 		NavierStokes & getNavierStokes();
 		NavierStokes const & getNavierStokes() const;
 
-		Region m_PhysicsRegion;
+		// Get a copy of flags
+		bool & getIsShowInfo();
+		bool const & getIsShowInfo() const;
+		bool & getIsShowRegion();
+		bool const & getIsShowRegion() const;
+
 	protected:
 	
 		// The main camera of this 3D scene
@@ -60,6 +65,10 @@ class Scene3D : public Scene
 
 		// The physics engine of the scene
 		NavierStokes m_NavierStokes;
+
+		// The flags for whether info and physics region is shown on the window
+		bool m_IsShowInfo;
+		bool m_IsShowRegion;
 };
 
 #endif

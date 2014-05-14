@@ -3,6 +3,7 @@
 
 #include "Renderer.h"
 #include "Scene3D.h"
+#include "Utilities/InfoDisplayer.h"
 
 class Renderer3D : public Renderer
 {
@@ -24,6 +25,9 @@ class Renderer3D : public Renderer
 
 		// A private copy of the scene information
 		Scene3D & m_Scene;
+
+		// Flag for showing all the info
+		bool m_InfoFlag;
 };
 
 #endif

@@ -5,6 +5,7 @@
 #include <string>
 
 #include "Particle.h"
+#include "ParticleProperty.h"
 
 using namespace std;
 
@@ -55,6 +56,9 @@ protected:
 
 	// The number of particle's texture.
 	GLuint m_ParticleTexture;
+
+	// The color of each particle
+	ParticleProperty m_ParticleProperty;
 
 	// The life time of each particle
 	float m_LifeMean;

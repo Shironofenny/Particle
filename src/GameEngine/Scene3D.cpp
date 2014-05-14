@@ -14,10 +14,10 @@ Scene3D::~Scene3D()
 void Scene3D::createScene()
 {
 	m_ParticleSystem.parseXML(ConstantHandler::getInstance().particleSystemSource);
-	m_PhysicsRegion.getLeftNearBottom() = Vector(-1., -1., -1.);
-	m_PhysicsRegion.getRightFarTop() = Vector(1., 1., 1.);
-	m_NavierStokes.initialize(Vector(10, 19, 10),\
-		 m_ParticleSystem.getSource() +	Vector(0, 0.25, 0), 0.05);
+	m_NavierStokes.parseXML(ConstantHandler::getInstance().navierStokesSource);
+
+	m_IsShowInfo = true;
+	m_IsShowRegion = true;
 }
 
 Camera & Scene3D::getCamera()
@@ -48,4 +48,24 @@ NavierStokes & Scene3D::getNavierStokes()
 NavierStokes const & Scene3D::getNavierStokes() const
 {
 	return m_NavierStokes;
+}
+
+bool & Scene3D::getIsShowInfo()
+{
+	return m_IsShowInfo;
+}
+
+bool const & Scene3D::getIsShowInfo() const
+{
+	return m_IsShowInfo;
+}
+
+bool & Scene3D::getIsShowRegion()
+{
+	return m_IsShowRegion;
+}
+
+bool const & Scene3D::getIsShowRegion() const
+{
+	return m_IsShowRegion;
 }

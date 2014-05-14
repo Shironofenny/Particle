@@ -1,5 +1,7 @@
 #include "NavierStokes.h"
 
+#include <cmath>
+
 NavierStokes::NavierStokes()
 {
 }
@@ -8,10 +10,34 @@ NavierStokes::~NavierStokes()
 {
 }
 
-void NavierStokes::initialize(Vector _scale, Vector _deviation, float _spacing)
+void NavierStokes::parseXML(string & _filename)
 {
-	m_FrameScale = _scale;
+	xml_node<> * simulation = XMLParser::getInstance().parseXMLFile(_filename)->first_node("Simulation");
+	
+	// Set values
+	m_Spacing = str2num(simulation->first_attribute("precision")->value());
+	
+	xml_node<> * scale = simulation->first_node("Scale");
+	m_FrameScale = Vector(str2num(scale->first_attribute("x")->value()),\
+			str2num(scale->first_attribute("y")->value()),\
+			str2num(scale->first_attribute("z")->value())); 
 
+	xml_node<> * deviation = simulation->first_node("CenterFromSource");
+	m_Deviation = Vector(str2num(deviation->first_attribute("x")->value()),\
+			str2num(deviation->first_attribute("y")->value()),\
+			str2num(deviation->first_attribute("z")->value())); 
+
+	xml_node<> * coefficient = simulation->first_node("Coefficient");
+	m_Bouyancy = str2num(coefficient->first_attribute("bouyancy")->value());
+	m_Viscousity = str2num(coefficient->first_attribute("viscousity")->value());
+
+	m_IterationTime = str2num(simulation->first_node("Iteration")->first_attribute("time")->value());
+
+	initialize();
+}
+
+void NavierStokes::initialize()
+{
 	m_Pressure.resize(getSize());
 	m_VelocityX.resize(getSize());
 	m_VelocityY.resize(getSize());
@@ -29,16 +55,8 @@ void NavierStokes::initialize(Vector _scale, Vector _deviation, float _spacing)
 	m_VDiv.setZero();
 
 	m_IsVelocityInitialized = false;
-	m_Bouyancy = 1.5;
-	m_Diffusivity = 5.0;
-	m_Viscousity = 10.0;
-
-	m_Spacing = _spacing;
+	
 	m_OneOverSpacing = 1. / m_Spacing;
-
-	m_Deviation = _deviation;
-
-	m_IterationTime = 10;
 
 	m_Region.getLeftNearBottom() = Vector(- (int)m_FrameScale[0] / 2,\
 		 	- (int)m_FrameScale[1] / 2, - (int)m_FrameScale[2] / 2) * m_Spacing + m_Deviation;

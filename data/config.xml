@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ParticleConfig>
+	<MakeMovie switch="off"> </MakeMovie>
+	<Window>
+		<initWindowSize> <x>960 </x> <y>540 </y> </initWindowSize>
+		<mousePosition> <x>480 </x> <y>270 </y> </mousePosition>
+	</Window>
+	<Camera>
+		<speed>0.01 </speed>
+		<rotz>0.01 </rotz>
+		<virtualRotationRadius>0.2 </virtualRotationRadius>
+	</Camera>
+	<ParticleSystem source="data/particle.xml" />
+	<NavierStokes source="data/navierstokes.xml" />
+</ParticleConfig>

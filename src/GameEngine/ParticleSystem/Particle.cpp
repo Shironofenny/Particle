@@ -42,7 +42,7 @@ void Particle::buildParticle(double _scale)
 
 double Particle::getLifeRatio()
 {
-	return m_Life / m_LifeTime;
+	return (m_Life / m_LifeTime);
 }
 
 bool Particle::isDead()
@@ -64,6 +64,7 @@ void Particle::render(Camera & _camera)
 	{
 		glBindTexture(GL_TEXTURE_2D, m_Texture);
 		glTranslatev(m_Position);
+		glScalef(m_Scale[0], m_Scale[1], m_Scale[2]);
 		_camera.irrotate2D();
 		glCallList(Particle::ms_Shape);
 	}
@@ -78,6 +79,16 @@ Vector & Particle::getVelocity()
 Vector const & Particle::getVelocity() const
 {
 	return m_Velocity;
+}
+	
+Vector & Particle::getScale()
+{
+	return m_Scale;
+}
+	
+Vector const & Particle::getScale() const
+{
+	return m_Scale;
 }
 	
 double & Particle::getMass()

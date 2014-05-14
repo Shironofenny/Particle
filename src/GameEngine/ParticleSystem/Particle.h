@@ -31,6 +31,10 @@ public:
 	Vector & getVelocity();
 	Vector const & getVelocity() const;
 
+	// Get a copy of orientation vector
+	Vector & getScale();
+	Vector const & getScale() const;
+
 	// Get a copy of the mass of the particle
 	double & getMass();
 	double const & getMass() const;
@@ -47,6 +51,9 @@ protected:
 	
 	// The orientation of this particle
 	Vector m_Velocity;
+
+	// The scale of this particle
+	Vector m_Scale;
 
 	// The current life of this particle
 	double m_Life;

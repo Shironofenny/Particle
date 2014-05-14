@@ -25,7 +25,7 @@ Vector RandomGenerator::getRandomVector()
 
 Vector RandomGenerator::getRandomUnitVector()
 {
-	float phi = getRandom() * 2 * M_PI;
+	float phi = getRandom() * 2 * M_PI - M_PI / 12;
 	float theta = acos(2 * getRandom() - 1);
 	return Vector(sin(theta) * cos(phi), sin(theta) * sin(phi), cos(theta));
 }
