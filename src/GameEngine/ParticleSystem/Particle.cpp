@@ -52,8 +52,10 @@ bool Particle::isDead()
 
 void Particle::update(double dt)
 {
-	m_Position += m_Orientation * dt;
+	m_Position += m_Velocity * dt;
 	m_Life += dt;
+	m_Pressure += dt;
+	m_Pressure = m_Pressure > 0 ? 0 : m_Pressure;
 }
 
 void Particle::render(Camera & _camera)
@@ -61,7 +63,6 @@ void Particle::render(Camera & _camera)
 	glPushMatrix();
 	{
 		glBindTexture(GL_TEXTURE_2D, m_Texture);
-		glColor4f(1., 0., 0., 1.0);
 		glTranslatev(m_Position);
 		_camera.irrotate2D();
 		glCallList(Particle::ms_Shape);
@@ -69,14 +70,14 @@ void Particle::render(Camera & _camera)
 	glPopMatrix();
 }
 	
-Vector & Particle::getOrientation()
+Vector & Particle::getVelocity()
 {
-	return m_Orientation;
+	return m_Velocity;
 }
 	
-Vector const & Particle::getOrientation() const
+Vector const & Particle::getVelocity() const
 {
-	return m_Orientation;
+	return m_Velocity;
 }
 	
 double & Particle::getMass()
@@ -87,4 +88,14 @@ double & Particle::getMass()
 double const & Particle::getMass() const
 {
 	return m_Mass;
+}
+	
+double & Particle::getPressure()
+{
+	return m_Pressure;
+}
+
+double const & Particle::getPressure() const
+{
+	return m_Pressure;
 }

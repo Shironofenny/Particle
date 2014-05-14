@@ -2,7 +2,6 @@
 
 ConstantHandler::ConstantHandler()
 {
-	maximumNumberOfLight = 5;
 }
 
 void ConstantHandler::restoreWindowSize(int x, int y)
@@ -33,4 +32,7 @@ void ConstantHandler::initialize()
 		cameraRotateZ = str2num(camera->first_node("rotz")->value());
 		virtualRotationRadius = str2num(camera->first_node("virtualRotationRadius")->value());
 	}
+
+	particleSystemSource = data->first_node("ParticleSystem")->first_attribute("source")->value();
+	navierStokesSource = data->first_node("NavierStokes")->first_attribute("source")->value();
 }

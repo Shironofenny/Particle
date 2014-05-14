@@ -45,6 +45,10 @@ class Scene3D : public Scene
 		ParticleSystem & getParticleSystem();
 		ParticleSystem const & getParticleSystem() const;
 
+		// Return the navier stokes physics engine of the scene
+		NavierStokes & getNavierStokes();
+		NavierStokes const & getNavierStokes() const;
+
 		Region m_PhysicsRegion;
 	protected:
 	
@@ -53,6 +57,9 @@ class Scene3D : public Scene
 
 		// The position of the light source
 		ParticleSystem m_ParticleSystem;
+
+		// The physics engine of the scene
+		NavierStokes m_NavierStokes;
 };
 
 #endif

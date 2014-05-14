@@ -41,6 +41,10 @@ public:
 	vector<Particle> & getParticles();
 	vector<Particle> const & getParticles() const;
 
+	// Get the source point of the particle system
+	Vector & getSource();
+	Vector const & getSource() const;
+
 protected:
 	
 	// Get the interpolated color out from the particle system
@@ -51,6 +55,25 @@ protected:
 
 	// The number of particle's texture.
 	GLuint m_ParticleTexture;
+
+	// The life time of each particle
+	float m_LifeMean;
+	float m_LifeVar;
+
+	// The center of this particle system
+	Vector m_SourceMean;
+	float m_SourceVar;
+
+	// The velocity of each particle
+	float m_VelocityMean;
+	float m_VelocityVar;
+
+	// The mass of each particle
+	float m_MassMean;
+	float m_MassVar;
+
+	// The number of particles generated per second
+	float m_GenerationPerSecond;
 
 };
 

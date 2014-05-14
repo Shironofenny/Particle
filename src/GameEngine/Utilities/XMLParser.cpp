@@ -34,7 +34,7 @@ xml_node <> * XMLParser::parseXMLFile(string _filename)
 	
 	m_Infile.close();
 	
-	return m_Document->first_node("AniConfig");
+	return m_Document->first_node("ParticleConfig");
 }
 
 void XMLParser::releaseXMLFile()

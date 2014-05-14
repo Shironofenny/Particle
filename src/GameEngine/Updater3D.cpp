@@ -12,6 +12,9 @@ void Updater3D::Update(double dt)
 	
 	camera.update(dt);
 
+	m_Scene.getNavierStokes().process(m_Scene.getParticleSystem().getParticles(),\
+		 m_Scene.getParticleSystem().getSource(), dt);
+
 	m_Scene.getParticleSystem().update(dt);
 }
 

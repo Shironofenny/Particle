@@ -21,6 +21,8 @@ void Renderer3D::Render()
 
 	camera.setup();
 	
+	m_Scene.getNavierStokes().renderRegion();
+
 	glEnable(GL_TEXTURE_2D);
 	glTexEnvf(GL_TEXTURE_2D,  GL_TEXTURE_ENV_MODE,  GL_MODULATE);
 	glEnable (GL_BLEND);

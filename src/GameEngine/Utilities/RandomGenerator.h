@@ -19,6 +19,9 @@ public:
 	
 	// Return a random vector
 	Vector getRandomVector();
+	
+	// Return a spherical random vector
+	Vector getRandomUnitVector();
 
 private:
 

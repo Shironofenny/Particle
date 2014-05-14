@@ -46,33 +46,11 @@ class ConstantHandler
 
 		int mousePositionY;
 
-		// The information string
-		string inverseInfo;
-		string forwardInfo;
-		string dragModeInfo;
-		string selectModeInfo;
-		string lockedInfo;
+		// The configuration file name of particle system
+		string particleSystemSource;
 
-		// Root node name for XML file
-		string xmlRootName;
-
-		// Name of initial posing data
-		string initXML;
-
-		// The value of mouse scale along camera z direction in IK
-		double mouseScale;
-
-		// The value of delta in Inverse Kinematics
-		double IKDelta;
-
-		// The number of lights
-		int numberOfLight;
-
-		// The maximum number of lights
-		int maximumNumberOfLight;
-
-		// The vector stores all the informations of lights
-		vector <Vector> positionOfLight;
+		// The configuration file of Navier-Stokes simulation
+		string navierStokesSource;
 
 	private:
 

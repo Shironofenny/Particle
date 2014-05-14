@@ -1,6 +1,9 @@
 #include "RandomGenerator.h"
 #include <cstdlib>
 #include <ctime>
+#include <cmath>
+
+#define _USE_MATH_DEFINES
 
 RandomGenerator::RandomGenerator()
 {
@@ -12,12 +15,17 @@ double RandomGenerator::getRandom()
 {
 	srand(m_Seed);
 	m_Seed = rand();
-	return ( ((double)rand()) / RAND_MAX );
+	return ( ((float)rand()) / RAND_MAX );
 }
 
 Vector RandomGenerator::getRandomVector()
 {
-	srand(m_Seed);
-	m_Seed = rand();
 	return Vector( (getRandom() * 2 - 1), (getRandom() * 2 - 1), (getRandom() * 2 - 1));
+}
+
+Vector RandomGenerator::getRandomUnitVector()
+{
+	float phi = getRandom() * 2 * M_PI;
+	float theta = acos(2 * getRandom() - 1);
+	return Vector(sin(theta) * cos(phi), sin(theta) * sin(phi), cos(theta));
 }
