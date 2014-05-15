@@ -9,7 +9,7 @@
 		<Generation persecond="350" />
 		<KeyFrames>
 			<Frame tr="0.0" r="1.0" g="1.0" b="1.0" a="0.0" sx="1.0" sy="1.0" sz="1.0" />
-			<Frame tr="0.1" r="1.0" g="1.0" b="0.0" a="1.0" sx="1.0" sy="1.0" sz="1.0" />
+			<Frame tr="0.1" r="0.6" g="0.6" b="0.0" a="1.0" sx="1.0" sy="1.0" sz="1.0" />
 			<Frame tr="0.5" r="1.0" g="0.0" b="0.0" a="1.0" sx="0.7" sy="0.7" sz="0.7" />
 			<Frame tr="1.0" r="1.0" g="0.0" b="0.0" a="0.0" sx="0.2" sy="0.4" sz="0.7"/>
 		</KeyFrames>

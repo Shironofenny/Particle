@@ -37,10 +37,12 @@ void ConstantHandler::initialize()
 	while(particlesystem != NULL)
 	{
 		particleSystemSource.push_back(particlesystem->first_attribute("source")->value());
+		particlesystem = particlesystem->next_sibling("ParticleSystem");
 	}
 	xml_node <> * navierStokes = data->first_node("NavierStokes");
 	while(navierStokes != NULL)
 	{
-		particleSystemSource.push_back(navierStokes->first_attribute("source")->value());
+		navierStokesSource.push_back(navierStokes->first_attribute("source")->value());
+		navierStokes = navierStokes->next_sibling("NavierStokes");
 	}
 }

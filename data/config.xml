@@ -12,4 +12,6 @@
 	</Camera>
 	<ParticleSystem source="data/particle.xml" />
 	<NavierStokes source="data/navierstokes.xml" />
+	<ParticleSystem source="data/fire.xml" />
+	<NavierStokes source="data/meteor.xml" />
 </ParticleConfig>

@@ -16,6 +16,8 @@ void Scene3D::createScene()
 	m_ParticleSystem.parseXML(ConstantHandler::getInstance().particleSystemSource[0]);
 	m_NavierStokes.parseXML(ConstantHandler::getInstance().navierStokesSource[0]);
 
+	m_CurrentSystemNumber = 0;
+
 	m_IsShowInfo = true;
 	m_IsShowRegion = true;
 }
@@ -68,4 +70,14 @@ bool & Scene3D::getIsShowRegion()
 bool const & Scene3D::getIsShowRegion() const
 {
 	return m_IsShowRegion;
+}
+
+int & Scene3D::getCurrentSystemNumber()
+{
+	return m_CurrentSystemNumber;
+}
+
+int const & Scene3D::getCurrentSystemNumber() const
+{
+	return m_CurrentSystemNumber;
 }

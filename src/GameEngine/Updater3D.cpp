@@ -19,6 +19,7 @@ void Updater3D::Update(double dt)
 
 	m_Scene.getParticleSystem().update(dt);
 
+	// Hide information and region
 	if(Keyboard::getInstance().isKeyTriggerDown('h'))
 	{
 		m_Scene.getIsShowInfo() = ! m_Scene.getIsShowInfo();
@@ -52,6 +53,22 @@ void Updater3D::Update(double dt)
 	if(Keyboard::getInstance().isKeyDown('o'))
 	{
 		m_Scene.getParticleSystem().getSource()[2] += m_Scene.getNavierStokes().getSpacing();
+	}
+
+	// Switch between systems
+	for(unsigned int i = 0; i < ConstantHandler::getInstance().particleSystemSource.size(); i++)
+	{
+		if(Keyboard::getInstance().isKeyDown(i+'1'))
+		{
+			if((int)i != m_Scene.getCurrentSystemNumber())
+			{
+				m_Scene.getParticleSystem().parseXML(\
+						ConstantHandler::getInstance().particleSystemSource[i]);
+				m_Scene.getNavierStokes().parseXML(\
+						ConstantHandler::getInstance().navierStokesSource[i]);
+				m_Scene.getCurrentSystemNumber() = (int)i;
+			}
+		}
 	}
 }
 

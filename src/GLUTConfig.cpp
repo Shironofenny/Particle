@@ -45,12 +45,12 @@ void GLUTConfig::g_Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
-	if(Keyboard::getInstance().isKeyDown('1'))
+	if(Keyboard::getInstance().isKeyDown('='))
 	{
 		glutFullScreen();
 		Mouse::getInstance().refresh();
 	}
-	if(Keyboard::getInstance().isKeyDown('2'))
+	if(Keyboard::getInstance().isKeyDown('-'))
 	{
 		glutReshapeWindow(960, 540);
 		glutPositionWindow(150, 100);

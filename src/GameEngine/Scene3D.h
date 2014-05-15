@@ -55,6 +55,10 @@ class Scene3D : public Scene
 		bool & getIsShowRegion();
 		bool const & getIsShowRegion() const;
 
+		// Get the number of current rendered system
+		int & getCurrentSystemNumber();
+		int const & getCurrentSystemNumber() const;
+
 	protected:
 	
 		// The main camera of this 3D scene
@@ -69,6 +73,9 @@ class Scene3D : public Scene
 		// The flags for whether info and physics region is shown on the window
 		bool m_IsShowInfo;
 		bool m_IsShowRegion;
+
+		// The number of current particle system that is being rendered
+		int m_CurrentSystemNumber;
 };
 
 #endif

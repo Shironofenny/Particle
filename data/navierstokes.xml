@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ParticleConfig>
 	<Simulation precision="0.05">
-		<Scale x="10" y="22" z="10" />
+		<Scale x="15" y="15" z="15" />
 		<CenterFromSource x="0" y="-0.15" z="0" />
 		<Coefficient bouyancy="1.8" viscousity="10.0" />
 		<Iteration time="10" />
