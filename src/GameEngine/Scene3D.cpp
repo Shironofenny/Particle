@@ -13,8 +13,8 @@ Scene3D::~Scene3D()
 
 void Scene3D::createScene()
 {
-	m_ParticleSystem.parseXML(ConstantHandler::getInstance().particleSystemSource);
-	m_NavierStokes.parseXML(ConstantHandler::getInstance().navierStokesSource);
+	m_ParticleSystem.parseXML(ConstantHandler::getInstance().particleSystemSource[0]);
+	m_NavierStokes.parseXML(ConstantHandler::getInstance().navierStokesSource[0]);
 
 	m_IsShowInfo = true;
 	m_IsShowRegion = true;

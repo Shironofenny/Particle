@@ -47,10 +47,10 @@ class ConstantHandler
 		int mousePositionY;
 
 		// The configuration file name of particle system
-		string particleSystemSource;
+		vector<string> particleSystemSource;
 
 		// The configuration file of Navier-Stokes simulation
-		string navierStokesSource;
+		vector<string> navierStokesSource;
 
 	private:
 

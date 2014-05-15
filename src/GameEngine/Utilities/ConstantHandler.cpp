@@ -33,6 +33,14 @@ void ConstantHandler::initialize()
 		virtualRotationRadius = str2num(camera->first_node("virtualRotationRadius")->value());
 	}
 
-	particleSystemSource = data->first_node("ParticleSystem")->first_attribute("source")->value();
-	navierStokesSource = data->first_node("NavierStokes")->first_attribute("source")->value();
+	xml_node <> * particlesystem = data->first_node("ParticleSystem");
+	while(particlesystem != NULL)
+	{
+		particleSystemSource.push_back(particlesystem->first_attribute("source")->value());
+	}
+	xml_node <> * navierStokes = data->first_node("NavierStokes");
+	while(navierStokes != NULL)
+	{
+		particleSystemSource.push_back(navierStokes->first_attribute("source")->value());
+	}
 }
