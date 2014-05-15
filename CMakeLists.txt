@@ -32,7 +32,6 @@ file (GLOB PARTICLE_SOURCES "./src/*.cpp" "./src/GameEngine/*.cpp" "./src/GameEn
 # package for opengl and glut
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
-find_package(GLEW REQUIRED)
 find_package(PNG REQUIRED)
 
 include_directories(${PROJECT_SOURCE_DIR}/lib)
