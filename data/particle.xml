@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ParticleConfig>
-	<Particle texture="data/texture/smoke.png" scale="0.003">
-		<Life mean="1.3" var="0.2" />
+	<Particle texture="data/texture/particle.png" scale="0.002">
+		<Life mean="1.6" var="0.4" />
 		<Source var="0.05">
-			<Position x="0.0" y="-0.4" z="0.0" />
+			<Position x="0.0" y="0.0" z="0.0" />
 		</Source>
 		<Mass mean="1.2" var="0.1" />
 		<Generation persecond="350" />
 		<KeyFrames>
-			<Frame tr="0.0" r="1.0" g="1.0" b="1.0" a="0.0" sx="1.0" sy="1.0" sz="1.0" />
-			<Frame tr="0.1" r="1.0" g="1.0" b="0.0" a="1.0" sx="1.0" sy="1.0" sz="1.0" />
-			<Frame tr="0.5" r="1.0" g="0.0" b="0.0" a="1.0" sx="0.7" sy="0.7" sz="0.7" />
-			<Frame tr="1.0" r="1.0" g="0.0" b="0.0" a="0.0" sx="0.2" sy="0.4" sz="0.7"/>
+			<Frame tr="0.0" r="1.0" g="1.0" b="0.0" a="0.0" sx="1.0" sy="1.0" sz="1.0" />
+			<Frame tr="0.8" r="1.0" g="0.0" b="1.0" a="1.0" sx="0.7" sy="0.7" sz="0.7" />
+			<Frame tr="1.0" r="0.5" g="0.0" b="1.0" a="0.0" sx="0.7" sy="0.7" sz="0.7" />
 		</KeyFrames>
 	</Particle>
 </ParticleConfig>
