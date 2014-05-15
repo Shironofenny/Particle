@@ -3,8 +3,8 @@
 
 #include "PhysicsEngine.h"
 #include "Region.h"
+#include "../ParticleSystem/Particle.h"
 #include "../Utilities/MathHeader.h"
-#include "../ParticleSystem/ParticleSystem.h"
 
 // This class solves Navier Stokes equation in a Eulerian 3D grid
 // and copy the result back to particles.
@@ -29,6 +29,10 @@ public:
 
 	// Render the region that this navier stokes has its effect
 	void renderRegion();
+
+	// Get the spacing of current simulation
+	float & getSpacing();
+	float const & getSpacing() const;
 
 protected:
 	

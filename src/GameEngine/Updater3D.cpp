@@ -27,6 +27,32 @@ void Updater3D::Update(double dt)
 	{
 		m_Scene.getIsShowRegion() = ! m_Scene.getIsShowRegion();
 	}
+
+	// Move the source
+	if(Keyboard::getInstance().isKeyDown('j'))
+	{
+		m_Scene.getParticleSystem().getSource()[0] -= m_Scene.getNavierStokes().getSpacing();
+	}
+	if(Keyboard::getInstance().isKeyDown('l'))
+	{
+		m_Scene.getParticleSystem().getSource()[0] += m_Scene.getNavierStokes().getSpacing();
+	}
+	if(Keyboard::getInstance().isKeyDown('k'))
+	{
+		m_Scene.getParticleSystem().getSource()[1] -= m_Scene.getNavierStokes().getSpacing();
+	}
+	if(Keyboard::getInstance().isKeyDown('i'))
+	{
+		m_Scene.getParticleSystem().getSource()[1] += m_Scene.getNavierStokes().getSpacing();
+	}
+	if(Keyboard::getInstance().isKeyDown('u'))
+	{
+		m_Scene.getParticleSystem().getSource()[2] -= m_Scene.getNavierStokes().getSpacing();
+	}
+	if(Keyboard::getInstance().isKeyDown('o'))
+	{
+		m_Scene.getParticleSystem().getSource()[2] += m_Scene.getNavierStokes().getSpacing();
+	}
 }
 
 int Updater3D::processSelection()

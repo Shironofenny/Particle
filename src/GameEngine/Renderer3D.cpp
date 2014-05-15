@@ -23,7 +23,10 @@ void Renderer3D::Render()
 
 	if(m_Scene.getIsShowInfo())
 	{
-		InfoDisplayer::getInstance().renderInfo(0, "String!");
+		InfoDisplayer::getInstance().renderInfo(4, "R : Hide/Show simulation region");
+		InfoDisplayer::getInstance().renderInfo(3, "H : Hide/Show information");
+		InfoDisplayer::getInstance().renderInfo(1, "Use U I O J K L to move the source around");
+		InfoDisplayer::getInstance().renderInfo(0, "L : +x | J : -x | I : +y | K : -y | O : +z | U : -z");
 	}
 
 	camera.setup();

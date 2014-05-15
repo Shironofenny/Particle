@@ -105,7 +105,7 @@ void NavierStokes::setVelocity(Vector & _source)
 	int x, y, z;
 	bool isOut;
 	getIndiceFromPosition(_source, x, y, z, isOut);
-	if(! m_IsVelocityInitialized)
+	if(! m_IsVelocityInitialized && ! isOut)
 	{
 		// Initialize with bouyancy
 		m_VelocityY.setConstant(m_Bouyancy);
@@ -123,7 +123,7 @@ void NavierStokes::setVelocity(Vector & _source)
 		// Set flag
 		m_IsVelocityInitialized = true;
 	}
-	else
+	else if (!isOut)
 	{
 		m_VelocityX[getIndice(x, y, z)] = 0.;
 		m_VelocityY[getIndice(x, y, z)] = m_Bouyancy;
@@ -389,7 +389,7 @@ int NavierStokes::getIndice(int x, int y, int z)
 	int value = (m_FrameScale[0] * m_FrameScale[1] * z + m_FrameScale[0] * y + x);
 	if (value >= getSize())
 	{
-		cout<<"Problem occurs for"<<x<<'\t'<<y<<'\t'<<z<<endl;
+		cout<<"Problem occurs for "<<x<<' '<<y<<' '<<z<<endl;
 		exit(0);
 	}
 	return value;
@@ -407,7 +407,7 @@ void NavierStokes::getIndiceFromPosition(Vector & _position, int & x, int & y, i
 	y = (_position[1] - m_Deviation[1]) * m_OneOverSpacing + m_FrameScale[1] / 2;
 	z = (_position[2] - m_Deviation[2]) * m_OneOverSpacing + m_FrameScale[2] / 2;
 
-	if (x >= m_FrameScale[0] || x <= 0 || y >= m_FrameScale[1] || y <= 0 || z >= m_FrameScale[2] || z <= 0)
+	if (x >= m_FrameScale[0] - 1 || x < 0 || y >= m_FrameScale[1] - 1 || y < 0 || z >= m_FrameScale[2] - 1 || z < 0)
 	{
 		isOut = true;
 	}
@@ -417,4 +417,14 @@ void NavierStokes::getIndiceFromPosition(Vector & _position, int & x, int & y, i
 void NavierStokes::renderRegion()
 {
 	m_Region.render();
+}
+	
+float & NavierStokes::getSpacing()
+{
+	return m_Spacing;
+}
+	
+float const & NavierStokes::getSpacing() const
+{
+	return m_Spacing;
 }
