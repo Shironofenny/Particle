@@ -21,6 +21,7 @@ void Renderer3D::Render()
 {
 	Camera & camera = m_Scene.getCamera();
 
+	glColor4f(1.0, 1.0, 1.0, 0.8);
 	if(m_Scene.getIsShowInfo())
 	{
 		InfoDisplayer::getInstance().renderInfo(4, "R : Hide/Show simulation region");

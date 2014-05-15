@@ -59,7 +59,8 @@ void ParticleSystem::parseXML(string const & _filename)
 			 											 str2num(frame->first_attribute("a")->value()),\
 			 											 str2num(frame->first_attribute("sx")->value()),\
 			 											 str2num(frame->first_attribute("sy")->value()),\
-			 											 str2num(frame->first_attribute("sz")->value()));
+			 											 str2num(frame->first_attribute("sz")->value()),\
+			 											 str2num(frame->first_attribute("p")->value()));
 		frame = frame->next_sibling();
 	}
 }
@@ -94,11 +95,13 @@ void ParticleSystem::render(Camera & _camera)
 {
 	GLfloat color[4];
 	Vector scale;
+	float pressure;
 	for(vector<Particle>::size_type i = 0; i < m_Particles.size(); i++)
 	{
-		m_ParticleProperty.getProperty(m_Particles[i].getLifeRatio(), color, scale);
+		m_ParticleProperty.getProperty(m_Particles[i].getLifeRatio(), color, scale, pressure);
 		glColor4fv(color);
 		m_Particles[i].getScale() = scale;
+		m_Particles[i].getPressure() = pressure;
 		m_Particles[i].render(_camera);
 	}
 }

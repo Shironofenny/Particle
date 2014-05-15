@@ -10,7 +10,7 @@ ParticleProperty::~ParticleProperty()
 
 }
 	
-void ParticleProperty::getProperty(float _timeRatio, GLfloat color[4], Vector & scale)
+void ParticleProperty::getProperty(float _timeRatio, GLfloat color[4], Vector & scale, float & p)
 {
 	// Sanity check
 	if(_timeRatio > 1.0 || _timeRatio < 0.0)
@@ -54,6 +54,7 @@ void ParticleProperty::getProperty(float _timeRatio, GLfloat color[4], Vector & 
 		color[3] = m_Alpha.back();
 
 		scale = m_Scale.back();
+		p = m_Pressure.back();
 	}
 	else if(keyFrame1 == -1)
 	{
@@ -63,6 +64,7 @@ void ParticleProperty::getProperty(float _timeRatio, GLfloat color[4], Vector & 
 		color[3] = m_Alpha.front();
 
 		scale = m_Scale.front();
+		p = m_Pressure.front();
 	}
 	else
 	{
@@ -70,6 +72,8 @@ void ParticleProperty::getProperty(float _timeRatio, GLfloat color[4], Vector & 
 		float w1, w2;
 		w1 = m_TimeRatio[keyFrame2] - _timeRatio;
 		w2 = _timeRatio - m_TimeRatio[keyFrame1];
+
+		// Normalize w1, w2
 		float total = w1 + w2;
 		w1 = w1 / total;
 		w2 = w2 / total;
@@ -80,16 +84,18 @@ void ParticleProperty::getProperty(float _timeRatio, GLfloat color[4], Vector & 
 		color[3] = m_Alpha[keyFrame1] * w1 + m_Alpha[keyFrame2] * w2;
 
 		scale = m_Scale[keyFrame1] * w1 + m_Scale[keyFrame2] * w2;
+		p = m_Pressure[keyFrame1] * w1 + m_Pressure[keyFrame2] * w2;
 	}
 }
 
 void ParticleProperty::addFrame(float _tr, float _r, float _g, float _b, float _a,\
-		float _sx, float _sy, float _sz)
+		float _sx, float _sy, float _sz, float _p)
 {
 	m_TimeRatio.push_back(_tr);
 	m_RGB.push_back(Vector(_r, _g, _b));
 	m_Alpha.push_back(_a);
 	m_Scale.push_back(Vector(_sx, _sy, _sz));
+	m_Pressure.push_back(_p);
 }
 
 void ParticleProperty::initialize()
